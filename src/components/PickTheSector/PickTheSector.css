@@ -1,0 +1,40 @@
+.main-container{
+    background-color:#d3def3 ;
+    height: 646px;
+}
+form{
+    text-align: center;
+    
+}
+#name{
+margin-right: 126px;
+border: 2px solid gray;
+border-radius: 4px;
+height: 20px;
+}
+select{
+    border: 2px solid gray;
+    border-radius: 4px;
+    scroll-behavior: smooth; 
+}
+
+select::-webkit-scrollbar {
+    width: 6px;
+
+  }
+  
+  select::-webkit-scrollbar-track {
+    background:whitesmoke;
+    border: 1px solid darkgray;        /* color of the tracking area */
+  }
+  select::-webkit-scrollbar-thumb {
+    background-color:gray;   
+    border-radius: 20px;       
+  }
+.save-button{
+    background-color:whitesmoke;
+    border: 2px solid gray;
+    border-radius: 4px;
+    width: 60px;
+    height: 30px;
+}

@@ -1,6 +1,6 @@
 .main-container{
     background-color:#d3def3 ;
-    height: 646px;
+    height: 660px;
 }
 form{
     text-align: center;
@@ -37,4 +37,8 @@ select::-webkit-scrollbar {
     border-radius: 4px;
     width: 60px;
     height: 30px;
+}
+.DotSpin{
+  margin-top: 20%;
+  margin-left: 44% !important
 }

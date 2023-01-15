@@ -4,24 +4,23 @@ import { useForm } from "react-hook-form";
 import { DotLoader } from 'react-spinners';
 function PickTheSector() {
    const [sectorData,setSectorData]=useState([]);
-   const [userData,setUserData] = useState({});
+   const [SaveUserData,setSaveUserData] = useState({});
    const [storedData,setStoredData]=useState([]);
    const [agree,setAgree]=useState(false);
-   const [selected,setSelected] = useState();
    const updateAgree=()=>setAgree((prev)=>!prev)
  console.log(agree);
 const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit=(userData)=>{
-   if(agree==true){
-      userData.check=agree;
-      setUserData(userData);
+     if(agree){
       console.log(userData);
-   }
-   else{
-      alert('Please agree to our terms !')
-   }
+      userData.check=agree;
+      setSaveUserData(userData)
+     }
+     else{
+      alert("please agree to our terms")
+     }
 }
-useEffect(()=>{
+ useEffect(()=>{
    // sectorData.length?setSpin(false):setSpin(true)
    fetch('https://pick-sector.onrender.com/sector')
    .then(res=>res.json())
@@ -31,24 +30,24 @@ useEffect(()=>{
 
 useEffect(()=>{
    // setSpin(true);
-   if(userData?.name){
+   if(SaveUserData?.name){
       fetch('https://pick-sector.onrender.com/user',{
       method:'POST',
       headers:{
          'content-type':'application/json'
       },
-      body:JSON.stringify(userData)
+      body:JSON.stringify(SaveUserData)
    })
    .then(res=>res.json())
    .then(data=>{
-      if(data.name){
+      if(data._id){
         alert('user info saved');
       }
       // setSpin(false)
    })
    }
 
-},[userData]);
+},[SaveUserData]);
 useEffect(()=>{
    // setSpin(true);
    fetch('https://pick-sector.onrender.com/user')
@@ -58,9 +57,8 @@ useEffect(()=>{
 
 //   setSpin(false);
 },[]);
-let i=0;
 let storedDataLength=storedData.length-1;
-console.log(storedData[storedDataLength])
+console.log(SaveUserData);
 
   return (
     <div className='main-container'>
@@ -80,7 +78,7 @@ console.log(storedData[storedDataLength])
         {
              sectorData.map((singleData)=>(
                
-              <option key={singleData._id} value={singleData.value} selected={(singleData.label===storedData[storedDataLength]?.Sector)?true:false} >{singleData.label}</option>   
+              <option key={singleData._id} value={singleData.value} selected={(singleData?.value===storedData[storedDataLength]?.Sector)?true:false} >{singleData.label}</option>   
              ))
         }
      </select>

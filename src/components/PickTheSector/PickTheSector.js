@@ -17,7 +17,7 @@ const { register, handleSubmit, watch, formState: { errors } } = useForm();
       setSaveUserData(userData)
      }
      else{
-      alert("please agree to our terms")
+      alert("please agree to our terms & condition");
      }
 }
  useEffect(()=>{
